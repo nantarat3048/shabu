@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>จองโต๊ะร้านชาบู</title>
+  <style>
+    body { font-family: "Prompt", sans-serif; background-color: #fffafa; margin: 0; }
+    header { background-color: #b22222; color: white; text-align: center; padding: 15px; font-size: 24px; }
+    form {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button { background-color: #b22222; color: white; border: none; font-size: 16px; cursor: pointer; }
+    button:hover { background-color: #a11e1e; }
+    .back-btn { background-color: #555; }
+    .back-btn:hover { background-color: #333; }
+  </style>
+</head>
+<body>
+  <header>📅 จองโต๊ะร้านชาบู</header>
+  <form id="reservationForm">
+    <label>ชื่อผู้จอง:</label>
+    <input type="text" id="name" required>
+
+    <label>เบอร์โทร:</label>
+    <input type="tel" id="phone" required>
+
+    <label>วันที่จอง:</label>
+    <input type="date" id="date" required>
+
+    <label>เวลาจอง:</label>
+    <input type="time" id="time" required>
+
+    <label>จำนวนที่นั่ง:</label>
+    <select id="seats">
+      <option value="2">2 ที่นั่ง</option>
+      <option value="4">4 ที่นั่ง</option>
+      <option value="6">6 ที่นั่ง</option>
+    </select>
+
+    <button type="submit">ยืนยันการจอง</button>
+    <button type="button" class="back-btn" onclick="goHome()">กลับหน้าแรก</button>
+  </form>
+
+  <script>
+    document.getElementById("reservationForm").addEventListener("submit", async e => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append("name", document.getElementById("name").value);
+      formData.append("phone", document.getElementById("phone").value);
+      formData.append("date", document.getElementById("date").value);
+      formData.append("time", document.getElementById("time").value);
+      formData.append("seats", document.getElementById("seats").value);
+
+      const res = await fetch("save_reservation.php", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await res.text();
+      if (result.trim() === "success") {
+        alert("จองโต๊ะเรียบร้อยแล้ว!");
+        e.target.reset();
+      } else {
+        alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+      }
+    });
+
+    function goHome() {
+      window.location.href = "home.html";
+    }
+  </script>
+</body>
+</html>

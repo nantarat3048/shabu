@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เมนูอาหาร | ร้านชาบู</title>
+  <style>
+    body {
+      font-family: "Prompt", sans-serif;
+      background-color: #fff5f5;
+      margin: 0;
+    }
+    header {
+      background-color: #b22222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+    }
+    .btn-bar {
+      text-align: center;
+      margin: 20px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background: #b22222;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .btn:hover { background: #a11e1e; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      color: #b22222;
+      margin-bottom: 15px;
+    }
+    .card button {
+      background: #b22222;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .card button:hover { background: #a11e1e; }
+  </style>
+</head>
+<body>
+
+<header>เมนูอาหาร</header>
+
+<div class="btn-bar">
+  <a href="home.html" class="btn">🏠 กลับหน้าแรก</a>
+  <a href="cart.html" class="btn">🛒 ดูตะกร้า</a>
+</div>
+
+<div class="menu-grid">
+  <div class="card">
+    <h3>น้ำซุปใสสุกี้</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>น้ำซุปชาบูน้ำดำ</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>น้ำซุปชาบูหมาล่า</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>น้ำซุปชาบูต้มยำ</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>สามชั้นสไลด์</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>สันคอสไลด์</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>สันนอกสไลด์</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หมูหมักนุ่ม</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>หมูหมักงา</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หมูหมักพริกไทยดำ</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>สันคอสไลด์</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หมูไม้ไผ่</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>สามชั้นกะทะ</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เบคอนรมควัน</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ตับหมู</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เซียงจี้</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ไส้ตันเล้ก</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เนื้อสไลด์(ริบอาย)</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เนื้อหมักงา</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เนื้อหมักพริกไทยดำ</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ผ้าขี้ริ้ว</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ไก่หมักงา</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ไก่หมักพริกไทยดำ</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>กุ้งขาว</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>กุ้งแม่น้ำ</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ปลาหมึกบั้ง</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ปลาหมึกหั่นวง</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หมึกสาย</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>หนวดหมึกยักษ์</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หอยเชลล์</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หอยแมลงภู่</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หอยตลับ</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>หอยน้ำผึ้ง</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ปลาดอลลี่</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ราวท้องปลาแซลม่อน</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>แมงกระพรุน</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ปลาหมึกกรอบ</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>นักเก็ตไก่</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ไก่พันอ้อย</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>กุ้งระเบิด</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ปูจ้อทอด</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>มาม่า</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ไข่ไก่</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ลูกชิ้นปลา</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ลูกชิ้นผัก</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เต้าหู้ปลา</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ฟองเต้าหู้ซีฟู๊ด</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ไส้กรอกคอลเทล</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ปูอัด</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เปาชีส</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หมึกฮอกไกโด</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>หมึกหลอด</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>เปาทูโทน</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>วุ้นเส้น</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เต้าหู้ไข่</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ไข่นกต้ม</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ข้าวผัด</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>บะหมี่หยก</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ลาบหมู</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ยำรวม</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>ยำสาหร่าย</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>กุ้งดองซีอิ้ว</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>แตงโม</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>กิมจิ</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>สปาเก็ตตี้</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>น้ำจิ้มชาบู</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>น้ำจิ้มซีฟู๊ด</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>น้ำจิ้มพอนซึ</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>น้ำจิ้มซอสงา</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>น้ำจิ้มแจ๋ว</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ผักกาดขาว</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ผักบุ้ง</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>กวางตุ้ง</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ขึ้นฉ่าย</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ผักกาดหอม</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เห็ดเข็มทอง</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>เห็ดชิเมจิ</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>แครอท</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ข้าวโพดหวาน</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ข้าวโพดอ่อน</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>เห็ดหูหนู</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เห็ดหิมะ</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>สาหร่ายวากาเมะ</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>กะหล่ำปลีซอย</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+  <div class="card">
+    <h3>หอมหัวใหญ่</h3>
+    <button onclick="addToCart('น้ำซุปใส')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>กระเทียมสด</h3>
+    <button onclick="addToCart('น้ำซุปชาบูหมาล่า')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>ฟักทอง</h3>
+    <button onclick="addToCart('สันคอสไลด์')">เพิ่มลงตะกร้า</button>
+  </div>
+
+  <div class="card">
+    <h3>เห็ดออเรนจิ</h3>
+    <button onclick="addToCart('หมูหมักนุ่ม')">เพิ่มลงตะกร้า</button>
+  </div>
+<script>
+function addToCart(name) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({ name: name });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("เพิ่ม " + name + " ลงตะกร้าแล้ว");
+}
+</script>
+
+</body>
+</html>

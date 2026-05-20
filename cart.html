@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ตะกร้าสินค้า</title>
+  <style>
+    body { font-family: "Prompt", sans-serif; background-color: #fff5f5; margin: 0; }
+    header { background-color: #b22222; color: white; padding: 15px; text-align: center; font-size: 24px; }
+    table { width: 90%; margin: 30px auto 10px; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+    th { background-color: #ffe5e5; }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button { background-color: #b22222; color: white; padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background-color: #a11e1e; }
+    .total {
+      text-align: right;
+      width: 90%;
+      margin: 0 auto 5px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #b22222;
+    }
+    .note {
+      text-align: right;
+      width: 90%;
+      margin: 0 auto 20px;
+      font-size: 14px;
+      color: #555;
+    }
+    .actions {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>🛒 ตะกร้าสินค้า</header>
+
+  <input type="text" id="customerName" placeholder="กรอกชื่อผู้สั่ง" required>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ชื่ออาหาร</th>
+        <th>ลบ</th>
+      </tr>
+    </thead>
+    <tbody id="cartBody"></tbody>
+  </table>
+
+  <div class="total" id="totalPrice">ราคาทั้งหมด 0 บาท</div>
+  <div class="note">บุฟเฟ่ไม่จำกัดเวลารวมเครื่องดื่มรีฟิล</div>
+
+  <div class="actions">
+    <button onclick="checkout()">ยืนยันการสั่งซื้อ</button>
+    <button onclick="goMenu()">กลับไปเลือกเมนู</button>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartBody = document.getElementById("cartBody");
+    const totalPriceEl = document.getElementById("totalPrice");
+
+    function renderCart() {
+      cartBody.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const price = Number(item.price) || 0;
+        const qty = Number(item.qty) || 1;
+        total += price * qty;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td><button onclick="removeItem(${index})">ลบ</button></td>
+        `;
+        cartBody.appendChild(row);
+      });
+
+      totalPriceEl.textContent = `ราคาทั้งหมด 258 บาท`;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    async function checkout() {
+      const customerName = document.getElementById("customerName").value.trim();
+      if (!customerName) {
+        alert("กรุณากรอกชื่อผู้สั่ง");
+        return;
+      }
+      if (cart.length === 0) {
+        alert("ยังไม่มีสินค้าในตะกร้า!");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("customer_name", customerName);
+      formData.append("order", JSON.stringify(cart));
+
+      const res = await fetch("save_order.php", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await res.text();
+      if (result.trim() === "success") {
+        alert("สั่งซื้อเรียบร้อย ขอบคุณที่ใช้บริการ!");
+        localStorage.removeItem("cart");
+        window.location.href = "index.php";
+      } else {
+        alert("เกิดข้อผิดพลาดในการบันทึกออเดอร์");
+      }
+    }
+
+    function goMenu() {
+      window.location.href = "menu.html";
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

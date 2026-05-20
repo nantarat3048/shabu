@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>หน้าแรก | ร้านชาบู</title>
+  <style>
+    body {
+      font-family: "Prompt", sans-serif;
+      background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc4tL0yn4s_d3RKxJSZZzH79iPpEuohLSKqQ&s") no-repeat center/cover;
+      margin: 0;
+      text-align: center;
+    }
+    header {
+      background: rgba(178,34,34,0.9);
+      color: white;
+      padding: 20px;
+      font-size: 26px;
+    }
+    main {
+      margin: 80px auto;
+      background: rgba(255,255,255,0.9);
+      width: 80%;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 25px;
+      background: #b22222;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+    .btn:hover { background: #a11e1e; }
+  </style>
+</head>
+<body onload="checkLogin()">
+  <header>ชาบูชิลล์ Phangnga</header>
+
+  <main>
+    <h2>ยินดีต้อนรับ</h2>
+    <p>เลือกบริการที่ต้องการ</p>
+    <a href="menu.html" class="btn">🍲 สั่งอาหาร</a>
+    <a href="reservation.html" class="btn">📅 จองโต๊ะ</a>
+    <br><br>
+    <a href="#" class="btn" onclick="logout()">🚪 ออกจากระบบ</a>
+  </main>
+
+  <script>
+    function checkLogin() {
+      const role = sessionStorage.getItem("role");
+      if (!role) {
+        window.location.href = "index.php";
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem("role");
+      window.location.href = "index.php"; // เด้งกลับหน้า index.php
+    }
+  </script>
+</body>
+</html>
